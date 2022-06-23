@@ -135,15 +135,15 @@ function  smurfPosition(){
 
 function collisionDetection(){
     let smurfPositionRowTop = Math.floor((smurfY) / tileHeight); //top middle edge
-    let smurfPositionColumnTop =  Math.floor((smurfX+15) / tileWidth);
+    let smurfPositionColumnTop =  Math.floor((smurfX+18) / tileWidth);
 
-    let smurfPositionRowRight = Math.floor((smurfY+15) / tileHeight); //right middle edge
-    let smurfPositionColumnRight =  Math.floor((smurfX+30) / tileWidth);
+    let smurfPositionRowRight = Math.floor((smurfY+18) / tileHeight); //right middle edge
+    let smurfPositionColumnRight =  Math.floor((smurfX+36) / tileWidth);
 
-    let smurfPositionRowBottom = Math.floor((smurfY+30) / tileHeight); //bottom middle edge
-    let smurfPositionColumnBottom =  Math.floor((smurfX+15) / tileWidth);
+    let smurfPositionRowBottom = Math.floor((smurfY+36) / tileHeight); //bottom middle edge
+    let smurfPositionColumnBottom =  Math.floor((smurfX+18) / tileWidth);
 
-    let smurfPositionRowLeft = Math.floor((smurfY+15) / tileHeight); //left middle edge
+    let smurfPositionRowLeft = Math.floor((smurfY+18) / tileHeight); //left middle edge
     let smurfPositionColumnLeft =  Math.floor((smurfX) / tileWidth);
  
     //collision from the top 
@@ -181,8 +181,8 @@ function collisionDetection(){
 
 //------------------------------------collect blueberry----------------------------------------------------
 function collectBlueberry(){
-    let smurfPositionRow = Math.floor((smurfY+15 )/ tileHeight); // center of the smurf
-    let smurfPositionColumn =  Math.floor((smurfX+15) / tileWidth);
+    let smurfPositionRow = Math.floor((smurfY+20 )/ tileHeight); // center of the smurf
+    let smurfPositionColumn =  Math.floor((smurfX+20) / tileWidth);
 
     if (maze[smurfPositionRow][smurfPositionColumn] == 2){
         maze[smurfPositionRow].splice([smurfPositionColumn],1,0)
