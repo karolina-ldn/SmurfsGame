@@ -15,6 +15,8 @@ let smurf = document.getElementById("smurf");
 let tile = document.getElementById("grass");
 let blueberry = document.getElementById("blueberry");
 let gargamel = document.getElementById("gargamel");
+let gargamelX = 120;
+let gargamelY = 40;
 
 let tileWidth = 40;
 let tileHeight = 40;
@@ -24,12 +26,12 @@ let tileSize = 40;
 
 /*  1 - grass
     2 - blueberry
-    3 - gargamel */
+     */
 
 const maze=[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-            [1,0,0,0,0,0,0,2,1,2,0,0,0,0,0,0,0,0,2,1],
+            [1,4,0,0,0,0,0,2,1,2,0,0,0,0,0,0,0,0,2,1],
             [1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,0,0,1],
-            [1,2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,3,1],
+            [1,2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
             [1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1],
             [1,0,0,0,0,0,0,2,1,2,0,0,0,0,0,0,0,0,0,1],
             [1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,1],
@@ -66,13 +68,15 @@ function runGame(){
 
     drawSmurf();
 
-    // smurfPosition();
+    gargamelMovement();
+
+    // smurfPosition(); // for debugging
 
     collisionDetection();
 
-    arrowInputs();
+    collectBlueberry();
 
-    // collectBlueberry();
+    smurfDeath();
     
    
 }
@@ -90,9 +94,13 @@ function renderMaze(){
             if (maze[i][j] == 2){
                 canvasContext.drawImage(blueberry, tileWidth*j+20, tileHeight*i+10,20,20);
             }
-            if (maze[i][j] == 3){
-                canvasContext.drawImage(gargamel, tileWidth*j, tileHeight*i ,30,30);
-            }
+            // if (maze[i][j] == 3){
+            //     canvasContext.drawImage(gargamel, tileW, tileHeight*i ,40,40);
+            // }
+
+            // if (maze[i][j] == 4){
+            //         canvasContext.drawImage(smurf,smurfX,smurfY,40,40);
+            //     }
             
             // canvasContext.strokeStyle = "red";
             // canvasContext.strokeRect(j*tileWidth,i*tileHeight,tileWidth,tileHeight)
@@ -104,6 +112,7 @@ function renderMaze(){
 
 
 //----------------------------------SMURF POSITION DISPLAYED ON SCREEN--------------------------------
+//for debugging
 let position = document.createElement("div")
 let box = document.getElementById("box")
 box.appendChild(position);
@@ -114,10 +123,10 @@ function  smurfPosition(){
     position.innerText = `top edge x: ${Math.floor((smurfX+15) / tileWidth)},
                                          y:${ Math.floor((smurfY) / tileHeight)},
                         right edge x: ${Math.floor((smurfX+30) / tileWidth)},
-                                         y:${ Math.floor((smurfY15) / tileHeight)},
+                                         y:${ Math.floor((smurfY+15) / tileHeight)},
                         left edge x: ${Math.floor((smurfX) / tileWidth)},
                                          y:${ Math.floor((smurfY+15) / tileHeight)},
-                        bottom right edge x: ${Math.floor((smurfX+30) / tileWidth)},
+                        bottom edge x: ${Math.floor((smurfX+15) / tileWidth)},
                                          y:${ Math.floor((smurfY+30) / tileHeight)}`              
 
 }
@@ -136,7 +145,7 @@ function collisionDetection(){
 
     let smurfPositionRowLeft = Math.floor((smurfY+15) / tileHeight); //left middle edge
     let smurfPositionColumnLeft =  Math.floor((smurfX) / tileWidth);
-    position.innerText=`leftRow: ${smurfPositionRowLeft} leftColumn: ${smurfPositionColumnLeft}`
+ 
     //collision from the top 
     if (maze[smurfPositionRowTop][smurfPositionColumnTop] == 1 ){
       
@@ -157,57 +166,18 @@ function collisionDetection(){
     }
 
     //collision from the left
-    if ([smurfPositionRowLeft][smurfPositionColumnLeft] == 1){
+    if (maze[smurfPositionRowLeft][smurfPositionColumnLeft] == 1){
         console.log("collision left");
+        smurfX +=3
     }
 
-    //
+    // allow movement only when is not colliting
 
     else {
         arrowInputs();
     }
-
-    
-
-    // if (maze[smurfPositionRow2][smurfPositionColumn2] == 1){
-    //     smurfX -=2;
-    // }
-   
-
-    // if (maze[smurfPositionRow3][smurfPositionColumn3] == 1){
-        
-    //     smurfX +=2;
-    // }
-    
-
-    // if (maze[smurfPositionRow4][smurfPositionColumn4] == 1){
-    //     smurfX -=2;
-    // }
-
 }
 
-
-// function collisionDetection(){
-//     // bottom edge of canvas
-//   if (smurfY >= canvas.height - 40) {
-//     smurfY = canvas.height - 40;
-//   }
-
-//   // right edge
-//   if (smurfX >= canvas.width - 40) {
-//     smurfX = canvas.width - 40;
-//   }
-
-//   // top edge
-//   if (smurfY <= 0) {
-//     smurfY = 0;
-//   }
-
-//   // left edge
-//   if (smurfX <= 0 ) {
-//     smurfX = 0;
-//   }
-// }
 
 //------------------------------------collect blueberry----------------------------------------------------
 function collectBlueberry(){
@@ -215,26 +185,25 @@ function collectBlueberry(){
     let smurfPositionColumn =  Math.floor((smurfX+15) / tileWidth);
 
     if (maze[smurfPositionRow][smurfPositionColumn] == 2){
-        maze.splice([smurfPositionRow][smurfPositionColumn],1,"0");
-        
+        maze[smurfPositionRow].splice([smurfPositionColumn],1,0)
+        pickBlueberry();
         
     }
+}
+
+//-------------------------------------GARGAMEL------------------------------------------------------------
+
+
+function gargamelMovement(){
+    canvasContext.drawImage(gargamel,gargamelX,gargamelY,40,40)
+
 }
 
 //---------------------------------------draw the smurf-----------------------------------------------------
 
 function drawSmurf() {
-    canvasContext.drawImage(smurf,smurfX,smurfY,30,30);
+    canvasContext.drawImage(smurf,smurfX,smurfY,40,40);
 }
-
-
-    // for (let i = 0; i < maze.length; i++){
-    //     for (let j = 0; j < maze[i].length; j++){
-    //         if (maze[i][j] == 4){
-    //             canvasContext.drawImage(smurf, smurfX, smurfY,30,30);
-    //         }
-    //     }
-    // }
     
 //----------------------------------------- Moving the smurf---------------------------------------------
 function arrowInputs() {
@@ -292,14 +261,31 @@ function keyUp (e){
         rightDir = false;
       }
 }
+//--------------------------------------SMURF Dead------------------------------------------------------------
+function smurfDeath(){
+    if (smurfX == gargamelX && smurfY == gargamelY){
+       
+        console.log("gargamel");
+    }
+    
+}
+
 //-----------------------------------------MUSIC AND SOUNDS--------------------------------------------------
 
 function playMusic(){
     let music = new Audio("/sounds/themesmurfs.mp3")
-    music.play()
-    
+    music.play();
+}
+
+function pickBlueberry(){
+    let music = new Audio("/sounds/pick.wav")
+    music.play();
 }
 
 //-----------------------------------------------------------------------------------------------------------
+playMusic();  
+
 runGame();
-// playMusic();         
+
+
+       
