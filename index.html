@@ -5,6 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frijole&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -12,7 +15,14 @@
   <img id="smurf" src="/images/smurf.png" hidden>
   <img id="grass" src="/images/grass.jpg" hidden>
   <img id="blueberry" src="/images/blueberry.png" hidden>
+  <img id="coin" src="/images/coin.png" hidden>
+  <img id="key" src="/images/key.png" hidden>
   <img id="gargamel" src="/images/gargamel.png" hidden>
-  <div id="box"><canvas id="gameCanvas"></canvas></div>
+  <div id="game">
+    <div class="game-title">SMURF'S LABIRYNTH</div>
+    <div class="descripion">Collect all the blueberries and don't get caught!</div>
+    <div id="button"><a onclick="start()">START</a></div>
+  </div>
+  <div id="box" class="hidden"><canvas id="gameCanvas"></canvas></div>
 </body>
 </html>
