@@ -313,7 +313,7 @@ function lostLive(){
     if (lives < 1){
         gameOverSound();
         alert("game over")
-        location.reload();
+        setTimeout(location.reload,3000);
     }
 }
 
