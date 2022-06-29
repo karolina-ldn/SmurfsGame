@@ -312,8 +312,8 @@ function lostLive(){
     livesNumber.innerText = `${lives}`
     if (lives < 1){
         gameOverSound();
-        alert("game over")
-        setTimeout(location.reload,3000);
+        setTimeout(alert("game over"),2000);
+        setTimeout(location.reload(),5000);
     }
 }
 
@@ -613,7 +613,8 @@ function smurfDeath(){
 
 function playMusic(){
     let music = new Audio("sounds/themesmurfs.mp3")
-    music.volume = 0.01
+    music.volume = 0.02
+    music.loop = true;
     music.play();
 }
 
