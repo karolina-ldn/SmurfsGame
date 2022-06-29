@@ -20,11 +20,11 @@ let gargamel = document.getElementById("gargamel");
 let gargamelX = 400;
 let gargamelY = 240;
 let cat = new Image();
-cat.src = "/images/cat.png"
+cat.src = "images/cat.png"
 let catX = 640
 let catY = 400
 let smurfette = new Image();
-smurfette.src = "/images/background.png"
+smurfette.src = "images/background.png"
 
 
 //gargamel directions
@@ -57,7 +57,7 @@ let collectedCoins = 0;
     5 - key
 */
 
-let maze=[  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+let maze1=[  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
             [1,0,0,0,0,0,0,3,1,2,3,3,3,3,3,3,3,3,2,1],
             [1,2,1,1,1,1,1,3,1,0,1,1,1,1,1,1,1,1,0,1],
             [1,0,0,0,0,3,1,2,0,0,0,0,0,0,0,2,1,2,0,1],
@@ -75,21 +75,21 @@ let maze=[  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
             
 ]
 
-let maze1 = [[0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
-            [1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
-            [1,2,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1],
-            [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1],
-            [1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-            [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1],
-            [1,0,1,0,1,1,1,0,1,1,1,1,1,1,1,0,1,1,0,1],
-            [1,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
-            [1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,1,0,1],
-            [1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,1,1,0,1],
-            [1,0,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,0,0,1],
-            [1,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,1],
-            [1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+let maze = [   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                [1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+                [1,2,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1],
+                [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1],
+                [1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1],
+                [1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,1],
+                [1,0,1,0,1,1,1,0,1,1,1,1,1,1,1,0,1,1,0,1],
+                [1,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
+                [1,1,1,1,1,1,0,0,0,1,1,0,1,1,1,1,0,1,0,1],
+                [1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,1,1,0,1],
+                [1,0,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,0,0,1],
+                [1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
+                [1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,1],
+                [1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
+                [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 
 ]
 
@@ -266,21 +266,21 @@ box.appendChild(scoreBoard);
 scoreBoard.className += "score-board";
 let blueberryImage = document.createElement("img"); //image on the score board
 scoreBoard.appendChild(blueberryImage);
-blueberryImage.src = "/images/blueberry.png";
+blueberryImage.src = "images/blueberry.png";
 blueberryImage.className += "blueberry-image";
 let scoreBlueberry = document.createElement("p");
 scoreBoard.appendChild(scoreBlueberry);
 scoreBlueberry.innerText = ` ${collectedBlueberries}`
 let coinImage = document.createElement("img");
 scoreBoard.appendChild(coinImage);
-coinImage.src = "/images/coin.png";
+coinImage.src = "images/coin.png";
 coinImage.className += "blueberry-image";
 let coinsCollected = document.createElement("p");
 scoreBoard.appendChild(coinsCollected);
 coinsCollected.innerText = `${collectedCoins}`
 let keyImage = document.createElement("img");
 scoreBoard.appendChild(keyImage);
-keyImage.src = "/images/key.png";
+keyImage.src = "images/key.png";
 keyImage.className += "key-image";
 let scoreKey = document.createElement("p");
 scoreBoard.appendChild(scoreKey);
@@ -299,7 +299,7 @@ function coinCount(){
 }
 //-----------------------------------------lives left-------------------------------------------------------
 let live = new Image();
-live.src = "/images/live.png";
+live.src = "images/live.png";
 scoreBoard.appendChild(live);
 live.className += "live";
 let lives = 3
@@ -312,7 +312,7 @@ function lostLive(){
     livesNumber.innerText = `${lives}`
     if (lives < 1){
         gameOverSound();
-        // alert("game over")
+        alert("game over")
         location.reload();
     }
 }
@@ -366,8 +366,22 @@ function nextLevel(){
     let smurfPositionRow = Math.floor((smurfY+20 )/ tileHeight); // center of the smurf
     let smurfPositionColumn =  Math.floor((smurfX+20) / tileWidth);
     if(smurfPositionRow  == 14 && smurfPositionColumn == 2){
-        maze = maze1;
+        changeMaze();
+        smurfX=40;
+        smurfY=40;
+        scoreKey.innerText = "collect all blueberries";
+        catX = 640
+        catY = 400
     }    
+}
+
+function changeMaze(){
+    if (maze == maze){
+        maze = maze1
+    }
+    if (maze == maze1){
+        maze = maze
+    }
 }
    
 //-------------------------------------GARGAMEL------------------------------------------------------------
@@ -441,7 +455,7 @@ function changeGargamelDirection (){
     //     changeDirection();
     // }
     setInterval(changeDirection,5000);
-}
+}       
 
 // function random(min,max){
 //     return Math.floor(Math.random()*(max-min+1))+min;
@@ -598,26 +612,26 @@ function smurfDeath(){
 //-----------------------------------------MUSIC AND SOUNDS--------------------------------------------------
 
 function playMusic(){
-    let music = new Audio("/sounds/themesmurfs.mp3")
-    music.volume = 0.03
+    let music = new Audio("sounds/themesmurfs.mp3")
+    music.volume = 0.01
     music.play();
 }
 
 function pickSound(){
-    let music = new Audio("/sounds/pick.wav")
+    let music = new Audio("sounds/pick.wav")
     music.volume = 0.03
     music.play();
 }
 
 function lostLiveSound(){
-    let music = new Audio("/sounds/lostlive.wav")
-    music.volume = 0.03
+    let music = new Audio("sounds/lostlive.wav")
+    music.volume = 0.05
     music.play();
 }
 
 function gameOverSound(){
-    let music = new Audio("/sounds/gameover.wav")
-    music.volume = 0.03
+    let music = new Audio("sounds/gameover.wav")
+    music.volume = 0.04
     music.play();
 }
 
@@ -627,7 +641,7 @@ function start(){
     box.className -= "hidden"
     let game = document.getElementById("game");
     game.remove();
-    // playMusic(); 
+    playMusic(); 
     runGame();
     changeGargamelDirection();
 }

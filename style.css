@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url("/images/background.png");
+    background-image: url("images/background.png");
     background-repeat: repeat;
     background-size: 10%;
     background-color: rgb(102, 181, 218);
@@ -20,7 +20,7 @@
   }
 
 #gameCanvas {
-    background-image: url("/images/sand.jpg");
+    background-image: url("images/sand.jpg");
     background-size: cover;
     display: border-box;
 }
@@ -70,7 +70,7 @@
     width: 500px;
     margin-top: 50px;
     border: 2px solid white;
-    background-image: url("/images/smurfs.jpg");
+    background-image: url("images/smurfs.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
